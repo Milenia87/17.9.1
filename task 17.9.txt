@@ -1,0 +1,24 @@
+array = input('Введите числа от 0 до 100 через пробел').split()
+L = list(map(int, array))
+print(L)
+print(len(L))
+element = int(input('Введите число от 1 до 100'))
+L.append(element)
+l_sorted = sorted(L)
+print(l_sorted)
+print(len(l_sorted))
+
+
+def binary_search(l_sorted, element, left, right):
+    if left > right:
+        return False
+    middle = (right + left) // 2
+    if l_sorted[middle] == element:
+        return middle
+    elif element < l_sorted[middle]:
+        return binary_search(l_sorted, element, left, middle - 1)
+    else:
+        return binary_search(l_sorted, element, middle + 1, right)
+
+
+print(binary_search(l_sorted, element, 0, len(l_sorted)))
